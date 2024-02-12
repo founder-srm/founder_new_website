@@ -76,3 +76,37 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap')
+
+
+:root {
+  overflow-x: hidden;
+}
+
+.container {
+  margin-top: 280px;
+  font-weight: 600;
+  padding: 0;
+  font-size: 52px;
+  font-family: Hellix, helvetica, arial, sans-serif;
+}
+h4 {
+  margin-left: 60px;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-family: Hellix, helvetica, arial, sans-serif;
+}
+.vid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  z-index: -10;
+}
+
+.colors {
+  background-color: rgb(30, 25, 25);
+}

@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+ 
+.navbar {
+    background-color: transparent;
+}
+ 
+.navbar.colorChange {
+    background-color: #000;
+}
+.menu-open { transform: translateX(0); }
+
+.menu-open .close-button { display: block; }
+
+.close-button { display: none; position: absolute; top: 0.2rem; right: 2rem; background-color: transparent; color: white; font-size: 1.75rem; cursor: pointer; }

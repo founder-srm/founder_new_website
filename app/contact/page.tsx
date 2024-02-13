@@ -14,7 +14,7 @@ import {
   FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import Navbar from "../components/Navbar"
+import Navbar from "../Navbar"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { supabase } from "../supabase.config"

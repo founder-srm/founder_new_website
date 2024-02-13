@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 import Spinner from "@/components/spinner/spinner";
-import Navbar from "../components/Navbar";
+import Navbar from "../Navbar";
 
 
 export default function Page() {

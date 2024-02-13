@@ -1,7 +1,7 @@
 import FadeIn from '../components/ui/Fade'
-import Title from './components/Title'
-import TypingEffect from './components/Typing'
-import Navbar from './components/Navbar'
+import Title from './Title'
+import TypingEffect from './Typing'
+import Navbar from './Navbar'
 
 export default function Home() {
   const text = 'Join the Founders Club: Where Innovation Meets Opportunity!'

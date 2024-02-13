@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/drawer"
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import Navbar from "../components/Navbar";
+import Navbar from "../Navbar";
 
 interface EventList {
     id: string;

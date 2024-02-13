@@ -1,6 +1,4 @@
 import FadeIn from '../components/ui/Fade'
-
-import Chips from './components/chips'
 import Image from 'next/image'
 
 import Title from './components/Title'

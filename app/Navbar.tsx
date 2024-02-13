@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
 
@@ -147,13 +147,7 @@ const Navbar = () => {
   const [colorChange, setColorchange] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const changeNavbarColor = () => {
-    if (document.body.scrollTop >= 80) {
-      setColorchange(true)
-    } else {
-      setColorchange(false)
-    }
-  }
+  
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
@@ -163,8 +157,29 @@ const Navbar = () => {
     e.stopPropagation()
     toggleMobileMenu()
   }
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log('scrolling')
+      if (typeof window !== 'undefined' && window.scrollY >= 80) {
+        setColorchange(true);
+      } else {
+        setColorchange(false);
+      }
+    };
 
-  window.addEventListener('scroll', changeNavbarColor)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
+
 
   return (
     <Fragment>

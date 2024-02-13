@@ -6,6 +6,7 @@ import Link from 'next/link'
 import './App.css'
 
 import styled from 'styled-components'
+import Image from 'next/image'
 
 const Nav = styled.nav`
   background: transparent;
@@ -40,22 +41,11 @@ const NavContainer = styled.div`
   color: white;
 `
 
-const NavLogo = styled.a`
-  color: white;
-  justify-self: flex-start;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  margin-left: -12px;
-  font-weight: bold;
-  text-decoration: none;
-`
 
-const MobileIcon = styled.div`
+const MobileIcon = styled.button`
   display: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
     display: block;
     position: absolute;
     top: 0;
@@ -76,7 +66,7 @@ const NavMenu = styled.div`
   margin-right: -22px;
   text-decoration: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 980px) {
     display: none;
   }
 `
@@ -89,7 +79,7 @@ const NavItem = styled.li`
   }
 `
 
-const NavLinks = styled.a`
+const NavLinks = styled.div`
   color: white;
   display: flex;
   align-items: center;
@@ -130,18 +120,14 @@ const MobileMenu = styled.div`
 `
 
 const MobileMenuLinks = styled.div`
-  flex-direction: column;
-  align-items: center;
   text-align: center;
   margin-top: 32px;
   width: 100%;
-
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `
 
-const MobileMenuLink = styled(NavLinks)`
+const MobileMenuLink = styled.div`
   color: white;
   display: grid;
   align-items: center;
@@ -181,11 +167,12 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <Nav className={colorChange ? 'navbar colorChange' : 'navbar'}>
+      <Nav className={`${colorChange ? 'navbar colorChange' : 'navbar'} py-1`}>
         <NavContainer>
-          <NavLogo href="/">Founder's Club</NavLogo>
-          <MobileIcon onClick={toggleMobileMenu}>
-            <FaBars />
+          {/* <NavLogo href="/">Founder's Club</NavLogo> */}
+          <Link href='/'><Image src='/logo-white.png' width='100' height='100' alt="logo" priority className='w-[50px] h-auto my-1' /></Link>
+          <MobileIcon onClick={() => toggleMobileMenu()} >
+            <FaBars className={`${mobileMenuOpen? 'hidden': ''}`} />
           </MobileIcon>
           <NavMenu>
             <NavItem>
@@ -219,26 +206,26 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <MobileMenu
           onClick={toggleMobileMenu}
-          className={mobileMenuOpen ? 'menu-open' : ''}
+          className={`${mobileMenuOpen ? 'menu-open' : ''} z-50 py-4`}
         >
-          <MobileMenuLinks>
-            <div className="close-button" onClick={handleMobileMenuLinkClick}>
+            <div className="close-button py-3 pl-2" onClick={handleMobileMenuLinkClick}>
               X
             </div>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} href="/about">
-              About
+          <MobileMenuLinks className='grid grid-cols-2'>
+            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+              <Link href="/about">About</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} href="/events">
-              Events
+            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+              <Link href="/team">Team</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} href="/team">
-              Team
+            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+              <Link href="/contact">Contact</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} href="/contact">
-              Contact
+            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+              <Link href="/gallery">Gallery</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} href="/gallery">
-              Gallery
+            <MobileMenuLink onClick={handleMobileMenuLinkClick} className=' col-span-2' >
+              <Link href="/events">Events</Link>
             </MobileMenuLink>
           </MobileMenuLinks>
         </MobileMenu>

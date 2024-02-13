@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Lato", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -74,7 +77,22 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }: { addUtilities: any }) {
+      const newUtilities = {
+        '.text-gradient': {
+          background: 'linear-gradient(to right, purple, teal, violet)',
+          '-webkit-background-clip': 'text',
+          '-moz-background-clip': 'text',
+          'background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+          'text-fill-color': 'transparent',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } satisfies Config
 
 export default config

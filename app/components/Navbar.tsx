@@ -148,7 +148,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const changeNavbarColor = () => {
-    if (window.scrollY >= 80) {
+    if (document.body.scrollTop >= 80) {
       setColorchange(true)
     } else {
       setColorchange(false)

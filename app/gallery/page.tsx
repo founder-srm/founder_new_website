@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 import Spinner from "@/components/spinner/spinner";
+import Navbar from "../components/Navbar";
 
 
 export default function Page() {
@@ -51,9 +52,9 @@ export default function Page() {
 
     return (
         <main className="w-screen h-screen flex items-center justify-center flex-col overflow-hidden bg-[#090909]">
-            {/* Navbar */}
+            <Navbar />
             <section className="w-full h-full py-2">
-                <h1 className=" font-mono w-full text-center text-white font-semibold text-4xl mt-4">Gallery</h1>
+                <h1 className=" font-mono w-full text-center text-white font-semibold text-4xl my-4">Gallery</h1>
                 {loading ? (
                     <Progress value={progress} className="w-[80%]" />
                 ) : (

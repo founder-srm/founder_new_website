@@ -11,6 +11,7 @@ import Image from 'next/image'
 const Nav = styled.nav`
   background: transparent;
   height: 80px;
+  width: 100%;
   display: flex;
   justify-content: center;
   text-decoration-color: white;

@@ -20,45 +20,40 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import Navbar from "../components/Navbar";
+
+interface EventList {
+    id: string;
+    name: string;
+    description: string;
+    venue: string;
+    start_date: string;
+    end_date: string;
+    updated_at: string;
+    banner_url: string;
+    moreinfo: string;
+}
 
 export default function Page() {
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState<EventList[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchEvents = async () => {
 
-            let { data: Events, error } = await supabase
+            let { data: Events, error } = await supabase 
                 .from('eventslist')
-                .select('*');
-            
-            if(error) console.log(error)
-            else {
-                // setEvents(Events ? Events.map(event => ({
-                //     ...event,
-                //     start_date: event.start_date ? new Date(event.start_date).toLocaleString() : null
-                // })) : []);    
-                setEvents(Events);         
+                .select('*')
+                .returns<EventList[]>();
+
+            if (error) {
+                toast.error('Error fetching data');
+            } else {
+                console.log(Events);
+                setEvents(Events || []);         
                 setLoading(false);
             }
-
-
-            //      TESTING DATA
-            //
-            // const Events = [
-            //     { id: 1, name: "Event 1", description: "Description for Event 1"},
-            //     { id: 2, name: "Event 2", description: "Description for Event 2"},
-            //     { id: 3, name: "Event 3", description: "Description for Event 3"},
-            //     { id: 4, name: "Event 4", description: "Description for Event 4"},
-            //     { id: 5, name: "Event 5", description: "Description for Event 5"},
-            //     { id: 6, name: "Event 6", description: "Description for Event 6"},
-            //     { id: 7, name: "Event 7", description: "Description for Event 7"},
-            //     { id: 8, name: "Event 8", description: "Description for Event 8"}
-            // ];
-            // setEvents(Events);
-            // setLoading(false);
-
-
         }
         fetchEvents();
     }, []);
@@ -74,8 +69,9 @@ export default function Page() {
 
     return (
         <main className="w-screen h-screen flex flex-col overflow-auto bg-[#090909]">
+            <Navbar />
             <section className="flex-grow py-6">
-                <h1 className="font-light text-center text-white font-bold text-4xl mt-5 mb-10 py-5">Events</h1>
+                <h1 className=" text-center text-white font-bold text-4xl mt-5 mb-10 py-5">Events</h1>
                 <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${numColumns} gap-5 md:gap-8 lg:gap-10 px-4`}>
                     {events && events.map((event, index) => (
                         <Card key={index} className="font-medium bg-[#4837ff] text-gray-100">

@@ -19,7 +19,13 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
 import {
     Dialog,
     DialogContent,
@@ -30,7 +36,8 @@ import {
     DialogFooter,
     DialogClose,
   } from "@/components/ui/dialog"
-import { Router } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+
 
 
 
@@ -68,19 +75,19 @@ const formSchema = z.object({
     }),
     name_second: z.string().min(2, {
       message: "your name must be at least 2 characters.",
-    }).nullable(),
+    }).optional().or(z.literal('')),
     name_third: z.string().min(2, {
       message: "your name must be at least 2 characters.",
-    }).nullable(),
+    }).optional().or(z.literal('')).or(z.literal('')),
     name_fourth: z.string().min(2, {
       message: "your name must be at least 2 characters.",
-    }).nullable(),
-    phone_lead: z.number().min(10, {
+    }).optional().or(z.literal('')).or(z.literal('')),
+    phone_lead: z.string().min(10, {
       message: "your phone number must be at least 10 characters.",
-    }),
-    phone_first: z.number().min(10, {
+    }).transform(Number),
+    phone_first: z.string().min(10, {
       message: "your phone number must be at least 10 characters.",
-    }),
+    }).transform(Number),
     email_lead: z.string().email({
       message: "your email must be a valid email.",
     }).includes('@srmist.edu.in', {
@@ -101,36 +108,30 @@ const formSchema = z.object({
     }).max(15, {
         message: "your registration number must be at most 15 characters."
     }),
-    registration_second: z.string().min(2, {
-      message: "your registration number must be at least 2 characters.",
-    }).max(15, {
+    registration_second: z.string().max(15, {
         message: "your registration number must be at most 15 characters."
-    }).nullable(),
-    registration_third: z.string().min(2, {
-      message: "your registration number must be at least 2 characters.",
-    }).max(15, {
+    }).optional().or(z.literal('')),
+    registration_third: z.string().max(15, {
         message: "your registration number must be at most 15 characters."
-    }).nullable(),
-    registration_fourth: z.string().min(2, {
-      message: "your registration number must be at least 2 characters.",
-    }).max(15, {
+    }).optional().or(z.literal('')),
+    registration_fourth: z.string().max(15, {
         message: "your registration number must be at most 15 characters."
-    }).nullable(),
+    }).optional().or(z.literal('')),
     track_name: z.string(),
     idea_desc: z.string().min(15, {
       message: "your idea description must be at least 15 characters.",
     }),
     gender_lead: z.string(),
     gender_first: z.string(),
-    gender_second: z.string().nullable(),
-    gender_third: z.string().nullable(),
-    gender_fourth: z.string().nullable(),
+    gender_second: z.string().optional().or(z.literal('')),
+    gender_third: z.string().optional().or(z.literal('')),
+    gender_fourth: z.string().optional().or(z.literal('')),
   })
 
 export default function Page() {
     const params = useParams<{ tag: string; item: string, slug: string }>();
     const [eventid, setEventid] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -186,12 +187,54 @@ export default function Page() {
       })
      
       // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-        console.log(values)
-        toast.success('Registered successfully');
-        router.push('/');
+    const onSubmit = async(values: z.infer<typeof formSchema>) => {
+        try {
+            setLoading(true);
+            const { data, error } = await supabase
+            .from('eventsregistration')
+            .insert([
+                {
+                    name_lead: values.name_lead,
+                    phone_lead: values.phone_lead,
+                    email_lead: values.email_lead,
+                    registration_lead: values.registration_lead,
+                    name_first: values.name_first,
+                    phone_first: values.phone_first,
+                    email_first: values.email_first,
+                    registration_first: values.registration_first,
+                    name_second: values.name_second,
+                    registration_second: values.registration_second,
+                    name_third: values.name_third,
+                    registration_third: values.registration_third,
+                    name_fourth: values.name_fourth,
+                    registration_fourth: values.registration_fourth,
+                    track_name: values.track_name,
+                    idea_desc: values.idea_desc,
+                    eventid: eventid,
+                    gender_lead: values.gender_lead,
+                    gender_first: values.gender_first,
+                    gender_second: values.gender_second,
+                    gender_third: values.gender_third,
+                    gender_fourth: values.gender_fourth,  
+                },
+            ])
+            .select()
+            
+            console.log(data)
+            console.log(error)
+
+            if( !error ) {
+                console.log(values)
+                toast.success('Registered successfully');
+                router.push('/');
+            }
+
+        } catch (error) {
+           console.log(error)
+           toast.error('Error in registering');
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
@@ -200,7 +243,7 @@ export default function Page() {
             <section className="flex flex-col items-center justify-evenly w-full my-6 md:my-12 lg:my-24 ">
                 <h2 className=" font-mono font-medium text-3xl w-full text-center text-white my-2">Registering for {params.slug}</h2>
                 <Form {...form}>
-                    <form className="space-y-8 w-8/12 grid  md:grid-cols-2 gap-6 border border-white rounded-lg p-2 bg-[#0E0E0E]">
+                    <form className="space-y-8 w-11/12 md:w-10/12 lg:w-8/12 grid  md:grid-cols-2 lg:grid-cols-3 gap-6 border border-white rounded-lg p-2 bg-[#0E0E0E]">
                         <FormField
                         control={form.control}
                         name="name_lead"
@@ -208,7 +251,7 @@ export default function Page() {
                             <FormItem className="mt-8">
                                 <FormLabel>Name of Team Lead</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Name" {...field} />
+                                    <Input className="text-black" placeholder="Name" {...field} />
                                 </FormControl>
                                 {/* <FormDescription>
                                     This is your public display name.
@@ -232,6 +275,27 @@ export default function Page() {
                                 <FormMessage />
                             </FormItem>
                         )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="gender_lead"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">Team Lead's Gender</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select your Gender " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
                         />
                         <FormField
                         control={form.control}
@@ -298,6 +362,27 @@ export default function Page() {
                         )}
                         />
                         <FormField
+                            control={form.control}
+                            name="gender_first"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">First Member's Gender</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select your Gender " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        <FormField
                         control={form.control}
                         name="email_first"
                         render={({ field }) => (
@@ -320,7 +405,7 @@ export default function Page() {
                             <FormItem>
                                 <FormLabel>Registration No. of First member</FormLabel>
                                 <FormControl>
-                                    <Input className="text-black" placeholder="RA.." {...field} />
+                                    <Input className="text-black" placeholder="RA..." {...field} />
                                 </FormControl>
                                 {/* <FormDescription>
                                     This is your public display name.
@@ -329,8 +414,49 @@ export default function Page() {
                             </FormItem>
                         )}
                         />
-                        <div className=" grid grid-cols-2 gap-6 md:col-span-2 border border-white m-2 border-dashed p-2 rounded-lg">
-                            <h3 className="col-span-2 font-semibold text-lg w-full text-center">Optional Info</h3>
+
+                        <FormField
+                            control={form.control}
+                            name="track_name"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">Track</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select a Track " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Ecommerce">Ecommerce</SelectItem>
+                                    <SelectItem value="HealthTech">HealthTech</SelectItem>
+                                    <SelectItem value="CyberSecurity">CyberSecurity</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="idea_desc"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormLabel>Idea Description</FormLabel>
+                                <FormControl>
+                                    <Textarea
+                                    placeholder="Tell us a little bit about your idea"
+                                    className="resize-none text-black"
+                                    {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 col-span-full border border-white m-2 border-dashed p-2 rounded-lg">
+                            <h3 className="col-span-full font-semibold text-lg w-full text-center">Optional Info</h3>
                             <FormField
                             control={form.control}
                             name="name_second"
@@ -338,7 +464,7 @@ export default function Page() {
                                 <FormItem>
                                     <FormLabel>Name of Second Member</FormLabel>
                                     <FormControl>
-                                        <Input className="text-black" placeholder="Name" value={field.value ? field.value : ''} />
+                                        <Input className="text-black" placeholder="Name" {...field} />
                                     </FormControl>
                                     {/* <FormDescription>
                                         This is your public display name.
@@ -354,7 +480,7 @@ export default function Page() {
                                 <FormItem>
                                     <FormLabel>Registration No. of Second member</FormLabel>
                                     <FormControl>
-                                        <Input className="text-black" placeholder="RA.." value={field.value ? field.value : ''} />
+                                        <Input className="text-black" placeholder="RA.." {...field} />
                                     </FormControl>
                                     {/* <FormDescription>
                                         This is your public display name.
@@ -365,12 +491,33 @@ export default function Page() {
                             />
                             <FormField
                             control={form.control}
+                            name="gender_second"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">Second Member's Gender</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select your Gender " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                            />
+                            <FormField
+                            control={form.control}
                             name="name_third"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Name of Third Member</FormLabel>
                                     <FormControl>
-                                        <Input className="text-black" placeholder="Name" value={field.value ? field.value : ''} />
+                                        <Input className="text-black" placeholder="Name" {...field} />
                                     </FormControl>
                                     {/* <FormDescription>
                                         This is your public display name.
@@ -386,7 +533,7 @@ export default function Page() {
                                 <FormItem>
                                     <FormLabel>Registration No. of Third member</FormLabel>
                                     <FormControl>
-                                        <Input className="text-black" placeholder="RA.." value={field.value ? field.value : ''} />
+                                        <Input className="text-black" placeholder="RA.." {...field} />
                                     </FormControl>
                                     {/* <FormDescription>
                                         This is your public display name.
@@ -397,12 +544,33 @@ export default function Page() {
                             />
                             <FormField
                             control={form.control}
+                            name="gender_third"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">Third Member's Gender</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select your Gender " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                            />
+                            <FormField
+                            control={form.control}
                             name="name_fourth"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Name of First Member</FormLabel>
+                                    <FormLabel>Name of Fourth Member</FormLabel>
                                     <FormControl>
-                                        <Input className="text-black" placeholder="Name" value={field.value ? field.value : ''} />
+                                        <Input className="text-black" placeholder="Name" {...field} />
                                     </FormControl>
                                     {/* <FormDescription>
                                         This is your public display name.
@@ -418,7 +586,7 @@ export default function Page() {
                                 <FormItem>
                                     <FormLabel>Registration No. of Fourth member</FormLabel>
                                     <FormControl>
-                                        <Input className="text-black" placeholder="RA.." value={field.value ? field.value : ''} />
+                                        <Input className="text-black" placeholder="RA.." {...field} />
                                     </FormControl>
                                     {/* <FormDescription>
                                         This is your public display name.
@@ -427,10 +595,31 @@ export default function Page() {
                                 </FormItem>
                             )}
                             />
+                            <FormField
+                            control={form.control}
+                            name="gender_fourth"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">Fourth Member's Gender</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select your Gender " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                            />
                         </div>
                         
                         <Dialog>
-                            <DialogTrigger type="button" className="col-span-2">Submit</DialogTrigger>
+                            <DialogTrigger type="button" className="col-span-full border-white border rounded-lg p-2 hover:bg-white hover:text-black transition-all duration-300 ease-in-out ">Submit</DialogTrigger>
                             <DialogContent className=" bg-[#0E0E0E] text-white">
                                 <DialogHeader>
                                 <DialogTitle>Are you absolutely sure?</DialogTitle>
@@ -439,8 +628,8 @@ export default function Page() {
                                 </DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter className="flex flex-row w-full gap-2 my-4">
-                                    <DialogClose className="flex-1 w-full"><Button type="button" variant='outline'  className="w-full text-black">Make some Changes</Button></DialogClose>
-                                    <Button variant='destructive' className=" flex-shrink" onClick={form.handleSubmit(onSubmit)}>Submit</Button>
+                                    <DialogClose className="flex-1 w-full"><Button disabled={loading} type="button" variant='outline'  className="w-full text-black">Make some Changes</Button></DialogClose>
+                                    <Button disabled={loading} variant='destructive' className=" flex-shrink" onClick={form.handleSubmit(onSubmit)}>Submit</Button>
                                 </DialogFooter>
                             </DialogContent>
                         </Dialog>

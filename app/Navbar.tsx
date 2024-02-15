@@ -160,7 +160,6 @@ const Navbar = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      console.log('scrolling')
       if (typeof window !== 'undefined' && window.scrollY >= 80) {
         setColorchange(true);
       } else {

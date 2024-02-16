@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { FaInstagram } from 'react-icons/fa'
-import { FaTwitter } from 'react-icons/fa'
-import { FaLinkedin } from 'react-icons/fa'
-import { FaGithub } from 'react-icons/fa'
+
+import { Instagram } from 'lucide-react'
+import { Twitter } from 'lucide-react'
+import { Linkedin } from 'lucide-react'
+import { Github } from 'lucide-react'
+<Instagram />
 function Footer() {
   return (
     <>
@@ -14,10 +16,10 @@ function Footer() {
               Founders<span className="text-blue-600"> CLUB</span>
             </p>
             <div className="flex gap-6 pb-5 text-white">
-              <FaInstagram className="text-2xl cursor-pointer hover:text-purple-600" />
-              <FaTwitter className="text-2xl cursor-pointer hover:text-blue-600" />
-              <FaLinkedin className="text-2xl cursor-pointer hover:text-blue-600" />
-              <FaGithub className="text-2xl cursor-pointer hover:text-blue-600" />
+              <Instagram className="text-2xl cursor-pointer hover:text-purple-600" />
+              <Twitter className="text-2xl cursor-pointer hover:text-blue-600" />
+              <Linkedin className="text-2xl cursor-pointer hover:text-blue-600" />
+              <Github className="text-2xl cursor-pointer hover:text-blue-600" />
             </div>
           </ul>
         </div>

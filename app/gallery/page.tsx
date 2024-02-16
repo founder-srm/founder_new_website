@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import Spinner from "@/components/spinner/spinner";
 import Navbar from "../Navbar";
 import Autoplay from "embla-carousel-autoplay";
+import Footer from "../Footer";
 
 
 export default function Page() {
@@ -64,17 +65,17 @@ export default function Page() {
       )
 
     return (
-        <main className="w-screen h-screen flex items-center justify-center flex-col overflow-hidden bg-[#090909]">
+        <main className="w-screen min-h-screen flex  justify-center flex-col overflow-auto bg-[#090909]">
             <Navbar />
-            <section className="w-full h-full py-2">
-                <h1 className=" font-mono w-full text-center text-white font-semibold text-4xl ">Gallery</h1>
+            <section className="w-full h-full mb-12">
+                {/* <h1 className=" font-mono w-full text-center text-white font-semibold text-4xl ">Gallery</h1> */}
                 {loading ? (
-                    <Progress value={progress} className="w-full my-24" />
+                    <Progress value={progress} className="w-full my-28" />
                 ) : (
-                    <section className="w-full h-full text-white flex justify-center items-center mb-2 scroll-smooth ">
+                    <section className="w-full h-full text-white flex justify-center items-center mt-24 mb-4 scroll-smooth ">
                         <Carousel
                             plugins={[plugin.current]}
-                            className="w-fit max-w-6xl"
+                            className="w-fit max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-6xl"
                             onMouseEnter={plugin.current.stop}
                             onMouseLeave={plugin.current.reset}
                             
@@ -82,7 +83,7 @@ export default function Page() {
                             <CarouselContent className="flex items-center gap-1 cursor-grab active:cursor-grabbing">
                                 {images.slice(1).map((imageURL, index) => (
                                     <CarouselItem key={index} className="bg-[#262626] flex flex-row justify-center items-center w-fit h-fit ">
-                                        <Image src={ imageURL } alt="Gallery Image" width={300} height={300} className=" w-auto h-auto min-w-[900px] rounded-lg"  loading="lazy" />
+                                        <Image src={ imageURL } alt="Gallery Image" width={300} height={300} className="  h-auto w-[500px] md:w-[600px] lg:w-[900px] rounded-lg"  loading="lazy" />
                                     </CarouselItem>
                                 ))}
 
@@ -93,7 +94,7 @@ export default function Page() {
                     </section>
                 )}
             </section>
-            {/* footer */}
+            <Footer />
         </main>
     );
 }

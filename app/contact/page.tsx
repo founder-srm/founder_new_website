@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { supabase } from "../supabase.config"
 import { useState } from "react"
+import Footer from "../Footer"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -97,11 +98,11 @@ export default function Page() {
   
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center items-center px-6 lg:px-8 bg-[#090909]">
+    <main className="flex min-h-full flex-1 flex-col justify-center items-center px-6 lg:px-8 bg-[#090909]">
       <Navbar />
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center my-12">
         <h2 className="mt-10 text-center  text-2xl font-bold leading-9 trackng-tight text-white">
-          Get in touch
+          Get in touch with us
         </h2>
         <h4 className= "  ">{`We'd love to hear from you! Please fill out the form below.`}</h4>
       </div>
@@ -196,7 +197,8 @@ export default function Page() {
           </form>
         </Form>
       </section>
-    </div>
+      <Footer />
+    </main>
   )
 }
 

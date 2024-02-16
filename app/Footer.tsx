@@ -5,7 +5,7 @@ import { Instagram } from 'lucide-react'
 import { Twitter } from 'lucide-react'
 import { Linkedin } from 'lucide-react'
 import { Github } from 'lucide-react'
-;<Instagram />
+
 function Footer() {
   return (
     <>

@@ -81,9 +81,9 @@ export default function Page() {
                                     <div className="space-y-1 flex flex-col justify-between">
                                         <h4 className="text-sm font-medium w-fit text-left text-wrap italic my-1">{`"${teamMember.tagline}"`}</h4>
                                         <div className="flex flex-row w-full gap-2 justify-around">
-                                            <Mail className="cursor-pointer" onClick={() => window.open(`mailto:${teamMember.socials.email}`)} />
-                                            <Instagram className="cursor-pointer" onClick={() => window.open(teamMember.socials.instagram)} />
-                                            <Linkedin className="cursor-pointer" onClick={() => window.open(teamMember.socials.linkedin)} />
+                                            <Mail className="hover:text-blue-600 cursor-pointer hover:scale-125 transition-all 250ms ease-in-out" onClick={() => window.open(`mailto:${teamMember.socials.email}`)} />
+                                            <Instagram className=" hover:text-purple-600  cursor-pointer hover:scale-125 transition-all 250ms ease-in-out" onClick={() => window.open(teamMember.socials.instagram)} />
+                                            <Linkedin className=" hover:text-blue-600 cursor-pointer hover:scale-125 transition-all 250ms ease-in-out" onClick={() => window.open(teamMember.socials.linkedin)} />
                                         </div>
                                     </div>
                                 </div>

@@ -64,7 +64,7 @@ export default function Page() {
         <main className="w-screen min-h-screen h-full flex flex-col items-center bg-[#0E0E0E] overflow-auto">
             <Navbar />
             {/* <h1 className=" font-lato text-white font-semibold text-4xl">Our Team</h1> */}
-            <section className=" w-11/12 my-12  grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 h-fit justify-center items-center">
+            <section className=" w-11/12 my-28  grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 h-fit justify-center items-center">
                 {teamData && teamData.sort((a, b) => a.id - b.id).map((teamMember) => (
                     <Card className={`flex flex-col items-center justify-between p-2 h-96 gap-2 bg-[#262626] text-white ${ teamMember.position === 'President' ? 'col-span-full w-full' : 'w-full md:w-[300px]'}`}>
                         <Image src={teamMember.image} alt={teamMember.name} width={300} height={300} className="w-[150px] h-[150px] flex rounded-full border border-white object-cover my-4" />

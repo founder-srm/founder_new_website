@@ -34,6 +34,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import Navbar from "../Navbar";
 import { Info, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Footer from "../Footer";
 
 
 interface EventList {
@@ -129,7 +130,7 @@ export default function Page() {
     return (
         <main className="w-screen h-screen flex flex-col justify-start overflow-auto bg-[#090909]">
             <Navbar />
-            <section className="flex flex-col justify-start ">
+            <section className="flex flex-col justify-start min-h-screen ">
                 <h1 className=" text-center text-white font-bold text-4xl mt-5 mb-10 py-5">Events</h1>
                 <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${numColumns} gap-5 md:gap-8 lg:gap-10 mx-2 md:mx-24`}>
                     {loading? ( 
@@ -213,6 +214,7 @@ export default function Page() {
                     )}
                 </div>
             </section>
+            <Footer />
         </main>
     );
 }

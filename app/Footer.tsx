@@ -5,7 +5,7 @@ import { Instagram } from 'lucide-react'
 import { Twitter } from 'lucide-react'
 import { Linkedin } from 'lucide-react'
 import { Github } from 'lucide-react'
-<Instagram />
+;<Instagram />
 function Footer() {
   return (
     <>
@@ -47,7 +47,7 @@ function Footer() {
           <ul>
             <p className="text-white font-bold text-2xl pb-4">Support</p>
             <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-              Contact
+              <Link href="/contact ">Contact</Link>
             </li>
           </ul>
         </div>

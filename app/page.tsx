@@ -2,6 +2,7 @@ import FadeIn from '../components/ui/Fade'
 import Title from './Title'
 import TypingEffect from './Typing'
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 export default function Home() {
   const text = 'Join the Founders Club: Where Innovation Meets Opportunity!'
@@ -11,7 +12,7 @@ export default function Home() {
     <>
       <FadeIn>
         {/* <Background /> */}
-        <div className=' '>
+        <div className=" ">
           <video
             width="310"
             height="220"
@@ -27,9 +28,9 @@ export default function Home() {
             <Navbar />
             <div className="text-white">
               <div className="container">
-                <br/>
+                <br />
                 <Title title={title} />
-                <br/>
+                <br />
               </div>
               <TypingEffect text={text} />
             </div>
@@ -48,16 +49,17 @@ export default function Home() {
             >
               Your browser does not support the video tag.
             </video>
-            <div className =" flex flex-col my-4 mx-6 md:mx-24">
-              <h2 className='font-mono font-semibold text-xl md:text-3xl text-white'>
+            <div className=" flex flex-col my-4 mx-6 md:mx-24">
+              <h2 className="font-mono font-semibold text-xl md:text-3xl text-white">
                 Build a Startup!
               </h2>
               <p className=" font-mono font-normal text-lg text-white">
-                Work With us to 
+                Work With us to
               </p>
             </div>
           </div>
         </div>
+        <Footer />
       </FadeIn>
     </>
   )

@@ -121,8 +121,9 @@ export default function Page() {
             }
         }
         const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${hours >= 12 ? 'pm' : 'am'}`;
-    
-        return `${formattedTime} on the ${formattedDate}`;
+        
+        // return `${formattedTime} on the ${formattedDate}`;
+        return `${formattedDate}`;
     }
 
     return (
@@ -163,7 +164,7 @@ export default function Page() {
                                                 <DrawerDescription className="flex items-center justify-center text-center text-white">
                                                     <ResizablePanelGroup
                                                         direction="horizontal"
-                                                        className=" max-w-5xl rounded-lg border"
+                                                        className=" max-w-6xl md:max-w-5xl rounded-lg border"
                                                     >
                                                         <ResizablePanel defaultSize={50}>
                                                             <div className="flex flex-col h-[200px] items-center justify-center p-6 gap-2">

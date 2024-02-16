@@ -222,7 +222,9 @@ export default function Page() {
             
             console.log(data)
             console.log(error)
-
+            if(error){
+                toast.error(`Error in registering: ${error.message}`);    
+            }
             if( !error ) {
                 console.log(values)
                 toast.success('Registered successfully');

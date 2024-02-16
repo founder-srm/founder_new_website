@@ -17,34 +17,34 @@ function Footer() {
             </p>
             <div className="flex gap-6 pb-5 text-white">
               <Link href="https://www.instagram.com/club.founders/">
-                <Instagram className="text-2xl cursor-pointer hover:text-purple-600 hover:scale-150 ease-in-out" />
+                <Instagram className="text-2xl cursor-pointer hover:text-purple-600 hover:scale-150 transition-all 250ms ease-in-out" />
               </Link>
-              <Twitter className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 ease-in-out" />
+              <Twitter className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 transition-all 250ms ease-in-out" />
               <Link href="https://www.linkedin.com/company/foundersclub-srm/">
-                <Linkedin className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 ease-in-out" />
+                <Linkedin className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 transition-all 250ms ease-in-out" />
               </Link>
               <Link href="https://github.com/founder-srm">
-                <Github className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 ease-in-out" />
+                <Github className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 transition-all 250ms ease-in-out" />
               </Link>
             </div>
           </ul>
         </div>
         <div className="p-5">
-          <ul>
+          <ul >
             <p className="text-white font-bold text-2xl pb-4">Club</p>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125 transition-all 250ms ease-in-out">
               <Link href="/about">About</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125 transition-all 250ms ease-in-out">
               <Link href="/events">Events</Link>
             </li>
             <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
               <Link href="/contact">Contact</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125 transition-all 250ms ease-in-out">
               <Link href="/team">Team</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125 transition-all 250ms ease-in-out">
               <Link href="/gallery">Gallery</Link>
             </li>
           </ul>

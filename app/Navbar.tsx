@@ -187,7 +187,7 @@ const Navbar = () => {
               height="100"
               alt="logo"
               priority
-              className="w-[50px] h-auto my-1"
+              className="w-auto h-[70px] my-1"
             />
           </Link>
           <MobileIcon onClick={() => toggleMobileMenu()}>

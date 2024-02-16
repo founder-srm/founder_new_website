@@ -210,7 +210,7 @@ export default function Page() {
                     registration_fourth: values.registration_fourth,
                     track_name: values.track_name,
                     idea_desc: values.idea_desc,
-                    eventid: eventid,
+                    // eventid: eventid,
                     gender_lead: values.gender_lead,
                     gender_first: values.gender_first,
                     gender_second: values.gender_second,

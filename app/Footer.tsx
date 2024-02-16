@@ -16,10 +16,16 @@ function Footer() {
               Founders<span className="text-blue-600"> CLUB</span>
             </p>
             <div className="flex gap-6 pb-5 text-white">
-              <Instagram className="text-2xl cursor-pointer hover:text-purple-600" />
+              <Link href="https://www.instagram.com/club.founders/">
+                <Instagram className="text-2xl cursor-pointer hover:text-purple-600" />
+              </Link>
               <Twitter className="text-2xl cursor-pointer hover:text-blue-600" />
-              <Linkedin className="text-2xl cursor-pointer hover:text-blue-600" />
-              <Github className="text-2xl cursor-pointer hover:text-blue-600" />
+              <Link href="https://www.linkedin.com/company/foundersclub-srm/">
+                <Linkedin className="text-2xl cursor-pointer hover:text-blue-600" />
+              </Link>
+              <Link href="https://github.com/founder-srm">
+                <Github className="text-2xl cursor-pointer hover:text-blue-600" />
+              </Link>
             </div>
           </ul>
         </div>

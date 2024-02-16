@@ -1,19 +1,28 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "../supabase.config";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 import Spinner from "@/components/spinner/spinner";
 import Navbar from "../Navbar";
+import Autoplay from "embla-carousel-autoplay";
 
 
 export default function Page() {
     const [images, setImages] = useState(['']);
     const [loading, setLoading] = useState(false);
-    const [progress, setProgress] = useState(13)
+    const [progress, setProgress] = useState(13);
+
     useEffect(() => {
         async function listFiles() {
             setLoading(true);
@@ -48,22 +57,39 @@ export default function Page() {
         }
         listFiles();
           
-    }, [])
+    }, []);
+
+    const plugin = useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: true })
+      )
 
     return (
         <main className="w-screen h-screen flex items-center justify-center flex-col overflow-hidden bg-[#090909]">
             <Navbar />
             <section className="w-full h-full py-2">
-                <h1 className=" font-mono w-full text-center text-white font-semibold text-4xl my-4">Gallery</h1>
+                <h1 className=" font-mono w-full text-center text-white font-semibold text-4xl ">Gallery</h1>
                 {loading ? (
-                    <Progress value={progress} className="w-[80%]" />
+                    <Progress value={progress} className="w-full my-24" />
                 ) : (
-                    <section className="w-full h-full text-white grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 3xl:grid-cols-5 justify-evenly items-center gap-4 py-12 overflow-y-auto scroll-smooth ">
-                        {images.slice(1).map((imageURL, index) => (
-                            <Card className="bg-[#262626] w-fit h-fit " key={index}>
-                                <Image src={ imageURL } alt="Gallery Image" width={300} height={300} className=" w-max h-max rounded-lg"  loading="lazy" />
-                            </Card>
-                        ))}
+                    <section className="w-full h-full text-white flex justify-center items-center mb-2 scroll-smooth ">
+                        <Carousel
+                            plugins={[plugin.current]}
+                            className="w-fit max-w-6xl"
+                            onMouseEnter={plugin.current.stop}
+                            onMouseLeave={plugin.current.reset}
+                            
+                        >
+                            <CarouselContent className="flex items-center gap-1 cursor-grab active:cursor-grabbing">
+                                {images.slice(1).map((imageURL, index) => (
+                                    <CarouselItem key={index} className="bg-[#262626] flex flex-row justify-center items-center w-fit h-fit ">
+                                        <Image src={ imageURL } alt="Gallery Image" width={300} height={300} className=" w-auto h-auto min-w-[900px] rounded-lg"  loading="lazy" />
+                                    </CarouselItem>
+                                ))}
+
+                            </CarouselContent>
+                            <CarouselPrevious className="text-white bg-[#090909]" />
+                            <CarouselNext className="text-white bg-[#090909]"/>
+                        </Carousel>
                     </section>
                 )}
             </section>

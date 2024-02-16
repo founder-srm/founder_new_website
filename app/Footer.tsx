@@ -9,7 +9,7 @@ import { Github } from 'lucide-react'
 function Footer() {
   return (
     <>
-      <div className="bg-[#131313] h-1/2 w-full flex md:flex-row flex-col justify-around items-startx`">
+      <div className="bg-[#000000] h-1/2 w-full flex md:flex-row flex-col justify-around items-startx`">
         <div className="p-5 ">
           <ul>
             <p className="text-white font-bold text-3xl pb-6">
@@ -58,7 +58,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center text-center  text-white p-5 bg-[#131313]">
+      <div className="flex flex-col justify-center items-center text-center  text-white p-5 bg-[#000000]">
         <span className="hover:text-blue-600 font-semibold cursor-pointer">
           <Link href="/">©Founder's Club </Link>
         </span>

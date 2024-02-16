@@ -9,7 +9,7 @@ import { Github } from 'lucide-react'
 function Footer() {
   return (
     <>
-      <div className="bg-[#1e1d1d] h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-20">
+      <div className="bg-[#131313] h-1/2 w-full flex md:flex-row flex-col justify-around items-startx`">
         <div className="p-5 ">
           <ul>
             <p className="text-white font-bold text-3xl pb-6">
@@ -17,14 +17,14 @@ function Footer() {
             </p>
             <div className="flex gap-6 pb-5 text-white">
               <Link href="https://www.instagram.com/club.founders/">
-                <Instagram className="text-2xl cursor-pointer hover:text-purple-600" />
+                <Instagram className="text-2xl cursor-pointer hover:text-purple-600 hover:scale-150 ease-in-out" />
               </Link>
-              <Twitter className="text-2xl cursor-pointer hover:text-blue-600" />
+              <Twitter className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 ease-in-out" />
               <Link href="https://www.linkedin.com/company/foundersclub-srm/">
-                <Linkedin className="text-2xl cursor-pointer hover:text-blue-600" />
+                <Linkedin className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 ease-in-out" />
               </Link>
               <Link href="https://github.com/founder-srm">
-                <Github className="text-2xl cursor-pointer hover:text-blue-600" />
+                <Github className="text-2xl cursor-pointer hover:text-blue-600 hover:scale-150 ease-in-out" />
               </Link>
             </div>
           </ul>
@@ -32,19 +32,19 @@ function Footer() {
         <div className="p-5">
           <ul>
             <p className="text-white font-bold text-2xl pb-4">Club</p>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
               <Link href="/about">About</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
               <Link href="/events">Events</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
               <Link href="/contact">Contact</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
               <Link href="/team">Team</Link>
             </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer hover:scale-125">
               <Link href="/gallery">Gallery</Link>
             </li>
           </ul>
@@ -58,7 +58,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center text-center  text-white p-5 bg-[#1e1d1d]">
+      <div className="flex flex-col justify-center items-center text-center  text-white p-5 bg-[#131313]">
         <span className="hover:text-blue-600 font-semibold cursor-pointer">
           <Link href="/">©Founder's Club </Link>
         </span>

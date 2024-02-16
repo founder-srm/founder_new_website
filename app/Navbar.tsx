@@ -18,7 +18,7 @@ const Nav = styled.nav`
   align-items: center;
   font-size: 1rem;
   /* Fix your navbar by using below two lines of code */
-  position: sticky;
+  position: fixed;
   top: 0;
   /* Fix your navbar by using above two lines of code */
   z-index: 10;
@@ -41,7 +41,6 @@ const NavContainer = styled.div`
   max-width: 1100px;
   color: white;
 `
-
 
 const MobileIcon = styled.button`
   display: none;
@@ -147,8 +146,6 @@ const Navbar = () => {
   const [colorChange, setColorchange] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
@@ -157,37 +154,44 @@ const Navbar = () => {
     e.stopPropagation()
     toggleMobileMenu()
   }
-  
+
   useEffect(() => {
     const handleScroll = () => {
       if (typeof window !== 'undefined' && window.scrollY >= 80) {
-        setColorchange(true);
+        setColorchange(true)
       } else {
-        setColorchange(false);
+        setColorchange(false)
       }
-    };
+    }
 
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll)
     }
 
     return () => {
       if (typeof window !== 'undefined') {
-        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('scroll', handleScroll)
       }
-    };
-  }, []);
-
-
+    }
+  }, [])
 
   return (
     <Fragment>
       <Nav className={`${colorChange ? 'navbar colorChange' : 'navbar'} py-1`}>
         <NavContainer>
           {/* <NavLogo href="/">Founder's Club</NavLogo> */}
-          <Link href='/'><Image src='/logo-white.png' width='100' height='100' alt="logo" priority className='w-[50px] h-auto my-1' /></Link>
-          <MobileIcon onClick={() => toggleMobileMenu()} >
-            <FaBars className={`${mobileMenuOpen? 'hidden': ''}`} />
+          <Link href="/">
+            <Image
+              src="/logo-white.png"
+              width="100"
+              height="100"
+              alt="logo"
+              priority
+              className="w-[50px] h-auto my-1"
+            />
+          </Link>
+          <MobileIcon onClick={() => toggleMobileMenu()}>
+            <FaBars className={`${mobileMenuOpen ? 'hidden' : ''}`} />
           </MobileIcon>
           <NavMenu>
             <NavItem>
@@ -223,23 +227,29 @@ const Navbar = () => {
           onClick={toggleMobileMenu}
           className={`${mobileMenuOpen ? 'menu-open' : ''} z-50 py-4`}
         >
-            <div className="close-button py-3 pl-2" onClick={handleMobileMenuLinkClick}>
-              X
-            </div>
-          <MobileMenuLinks className='grid grid-cols-2'>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+          <div
+            className="close-button py-3 pl-2"
+            onClick={handleMobileMenuLinkClick}
+          >
+            X
+          </div>
+          <MobileMenuLinks className="grid grid-cols-2">
+            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
               <Link href="/about">About</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
               <Link href="/team">Team</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
               <Link href="/contact">Contact</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} >
+            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
               <Link href="/gallery">Gallery</Link>
             </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick} className=' col-span-2' >
+            <MobileMenuLink
+              onClick={handleMobileMenuLinkClick}
+              className=" col-span-2"
+            >
               <Link href="/events">Events</Link>
             </MobileMenuLink>
           </MobileMenuLinks>

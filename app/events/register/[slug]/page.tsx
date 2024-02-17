@@ -132,6 +132,8 @@ export default function Page() {
     const params = useParams<{ tag: string; item: string, slug: string }>();
     const [eventid, setEventid] = useState('');
     const [loading, setLoading] = useState(false);
+    const [File, setFile] = useState<File | null>(null);
+    const [Url , setUrl] = useState('');
     const router = useRouter();
 
     useEffect(() => {
@@ -185,8 +187,41 @@ export default function Page() {
             gender_fourth: '',
         },
       })
-     
-      // 2. Define a submit handler.
+
+    const onUpload = async () => {
+
+        // const randomName = Math.random().toString(36).substring(7);
+        toast.success('Uploading file...');
+        if (!File) {
+            toast.error('No file selected');
+            return;
+        }
+        const { data, error } = await supabase
+            .storage
+            .from('presentation')
+            .upload(`registrations/${File.name}.pptx`, File, {
+                cacheControl: '3600',
+                upsert: false
+            })
+        if (error) {
+            toast.error(`Error in uploading file: ${error.message}`);
+            return;
+        }
+        if (data) {
+            toast.success('Retrieving Url...');
+            console.log(data);
+        }
+        const { data : fileData } = supabase
+            .storage
+            .from('presentatioin')
+            .getPublicUrl(`registrations/${File.name}.pptx`)
+        if (fileData) {
+            setUrl(fileData.publicUrl )
+            console.log(fileData.publicUrl);
+            toast.success('File uploaded successfully \n Please submit the form now!');
+        }
+    } 
+    
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
         try {
             setLoading(true);
@@ -211,6 +246,7 @@ export default function Page() {
                     track_name: values.track_name,
                     idea_desc: values.idea_desc,
                     // eventid: eventid,
+                    presentation_link: Url,
                     gender_lead: values.gender_lead,
                     gender_first: values.gender_first,
                     gender_second: values.gender_second,
@@ -456,6 +492,20 @@ export default function Page() {
                                 </FormItem>
                             )}
                         />
+                        <div className=" col-span-full">
+                            <FormLabel>{`Presentation link (.pptx) `}</FormLabel>
+                            <div className="flex flex-row gap-1">
+                                <Input
+                                    type="file"
+                                    accept=".pptx"
+                                    className="text-black"
+                                    required
+                                    onChange={(e) => setFile(e.target.files![0])}
+                                />
+                                <Button disabled={loading} variant='secondary' type="button" onClick={() => onUpload()}>Submit file</Button>
+                            </div>
+                            <FormDescription className=" ml-4 mt-2">{`Name the File as the Team lead's Registration Number`}</FormDescription>
+                        </div>
 
                         <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6 col-span-full border border-white m-2 border-dashed p-2 rounded-lg">
                             <h3 className="col-span-full font-semibold text-lg w-full text-center">Optional Info</h3>

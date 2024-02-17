@@ -251,7 +251,7 @@ export default function Page() {
                         name="name_lead"
                         render={({ field }) => (
                             <FormItem className="mt-8">
-                                <FormLabel>Name of Team Lead</FormLabel>
+                                <FormLabel>{`Name of first member (Team Lead) `}</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="Name" {...field} />
                                 </FormControl>
@@ -267,7 +267,7 @@ export default function Page() {
                         name="phone_lead"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Phone number of Team Lead</FormLabel>
+                                <FormLabel>{`Phone number of First member (Team Lead)`}</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="Phone Number" type='number' {...field} />
                                 </FormControl>
@@ -283,7 +283,7 @@ export default function Page() {
                             name="gender_lead"
                             render={({ field }) => (
                             <FormItem className="text-black">
-                                <FormLabel className="text-white">Team Lead's Gender</FormLabel>
+                                <FormLabel className="text-white">{`First member (Team Lead)'s Gender`}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>
@@ -304,7 +304,7 @@ export default function Page() {
                         name="email_lead"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email of Team Lead</FormLabel>
+                                <FormLabel>{`Email of First member (Team Lead)`}</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="@srmist.edu.in" type='email' {...field} />
                                 </FormControl>
@@ -320,7 +320,7 @@ export default function Page() {
                         name="registration_lead"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Registration No. of Team Lead</FormLabel>
+                                <FormLabel>{`Registration No. of First member (Team Lead)`}</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="RA..." {...field} />
                                 </FormControl>
@@ -336,7 +336,7 @@ export default function Page() {
                         name="name_first"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name of First Member</FormLabel>
+                                <FormLabel>Name of Second Member</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="Name" {...field} />
                                 </FormControl>
@@ -352,7 +352,7 @@ export default function Page() {
                         name="phone_first"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Phone Number of First Member</FormLabel>
+                                <FormLabel>Phone Number of Second Member</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="Phone no." type="number" {...field} />
                                 </FormControl>
@@ -368,7 +368,7 @@ export default function Page() {
                             name="gender_first"
                             render={({ field }) => (
                             <FormItem className="text-black">
-                                <FormLabel className="text-white">First Member's Gender</FormLabel>
+                                <FormLabel className="text-white">Second Member's Gender</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>
@@ -389,7 +389,7 @@ export default function Page() {
                         name="email_first"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email of First Member</FormLabel>
+                                <FormLabel>Email of Second Member</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="@srmist.edu.in" type="email" {...field} />
                                 </FormControl>
@@ -405,7 +405,7 @@ export default function Page() {
                         name="registration_first"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Registration No. of First member</FormLabel>
+                                <FormLabel>Registration No. of Second member</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="RA..." {...field} />
                                 </FormControl>
@@ -464,7 +464,7 @@ export default function Page() {
                             name="name_second"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Name of Second Member</FormLabel>
+                                    <FormLabel>Name of Third Member</FormLabel>
                                     <FormControl>
                                         <Input className="text-black" placeholder="Name" {...field} />
                                     </FormControl>
@@ -480,59 +480,6 @@ export default function Page() {
                             name="registration_second"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Registration No. of Second member</FormLabel>
-                                    <FormControl>
-                                        <Input className="text-black" placeholder="RA.." {...field} />
-                                    </FormControl>
-                                    {/* <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription> */}
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                            />
-                            <FormField
-                            control={form.control}
-                            name="gender_second"
-                            render={({ field }) => (
-                            <FormItem className="text-black">
-                                <FormLabel className="text-white">Second Member's Gender</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                    <SelectTrigger>
-                                    <SelectValue placeholder="Select your Gender " />
-                                    </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                    <SelectItem value="Female">Female</SelectItem>
-                                    <SelectItem value="Male">Male</SelectItem>
-                                </SelectContent>
-                                </Select>
-                                <FormMessage />
-                            </FormItem>
-                            )}
-                            />
-                            <FormField
-                            control={form.control}
-                            name="name_third"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Name of Third Member</FormLabel>
-                                    <FormControl>
-                                        <Input className="text-black" placeholder="Name" {...field} />
-                                    </FormControl>
-                                    {/* <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription> */}
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                            />
-                            <FormField
-                            control={form.control}
-                            name="registration_third"
-                            render={({ field }) => (
-                                <FormItem>
                                     <FormLabel>Registration No. of Third member</FormLabel>
                                     <FormControl>
                                         <Input className="text-black" placeholder="RA.." {...field} />
@@ -546,7 +493,7 @@ export default function Page() {
                             />
                             <FormField
                             control={form.control}
-                            name="gender_third"
+                            name="gender_second"
                             render={({ field }) => (
                             <FormItem className="text-black">
                                 <FormLabel className="text-white">Third Member's Gender</FormLabel>
@@ -567,7 +514,7 @@ export default function Page() {
                             />
                             <FormField
                             control={form.control}
-                            name="name_fourth"
+                            name="name_third"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Name of Fourth Member</FormLabel>
@@ -583,7 +530,7 @@ export default function Page() {
                             />
                             <FormField
                             control={form.control}
-                            name="registration_fourth"
+                            name="registration_third"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Registration No. of Fourth member</FormLabel>
@@ -599,10 +546,63 @@ export default function Page() {
                             />
                             <FormField
                             control={form.control}
-                            name="gender_fourth"
+                            name="gender_third"
                             render={({ field }) => (
                             <FormItem className="text-black">
                                 <FormLabel className="text-white">Fourth Member's Gender</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                    <SelectValue placeholder="Select your Gender " />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                            />
+                            <FormField
+                            control={form.control}
+                            name="name_fourth"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Name of Fifth Member</FormLabel>
+                                    <FormControl>
+                                        <Input className="text-black" placeholder="Name" {...field} />
+                                    </FormControl>
+                                    {/* <FormDescription>
+                                        This is your public display name.
+                                    </FormDescription> */}
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                            />
+                            <FormField
+                            control={form.control}
+                            name="registration_fourth"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Registration No. of Fifth member</FormLabel>
+                                    <FormControl>
+                                        <Input className="text-black" placeholder="RA.." {...field} />
+                                    </FormControl>
+                                    {/* <FormDescription>
+                                        This is your public display name.
+                                    </FormDescription> */}
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                            />
+                            <FormField
+                            control={form.control}
+                            name="gender_fourth"
+                            render={({ field }) => (
+                            <FormItem className="text-black">
+                                <FormLabel className="text-white">Fifth Member's Gender</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>

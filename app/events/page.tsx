@@ -189,11 +189,11 @@ export default function Page() {
                                                                 </div>
                                                             </ResizablePanel>
                                                             <ResizableHandle disabled />
-                                                            <ResizablePanel defaultSize={25}>
+                                                            {/* <ResizablePanel defaultSize={25}>
                                                                 <span className="flex flex-row h-full items-center justify-center p-6 gap-2 font-semibold">
                                                                     Know More: <Info onClick={() => window.open(event.moreinfo)} className=" text-white hover:bg-gray-300 hover:text-black rounded-lg transition-all duration-200 ease-in-out cursor-pointer"/>
                                                                 </span>
-                                                            </ResizablePanel>
+                                                            </ResizablePanel> */}
                                                             </ResizablePanelGroup>
                                                         </ResizablePanel>
                                                     </ResizablePanelGroup>

@@ -214,7 +214,7 @@ export default function Page() {
         const { data : fileData } = supabase
             .storage
             .from('presentatioin')
-            .getPublicUrl(`registrations/${File.name}.pptx`)
+            .getPublicUrl(`registrations/${File.name}`)
         if (fileData) {
             setUrl(fileData.publicUrl )
             console.log(fileData.publicUrl);

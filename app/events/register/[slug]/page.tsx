@@ -37,6 +37,12 @@ import {
     DialogClose,
   } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea";
+import { Info } from "lucide-react";
+import {
+    HoverCard,
+    HoverCardContent,
+    HoverCardTrigger,
+  } from "@/components/ui/hover-card"
 
 
 
@@ -493,7 +499,28 @@ export default function Page() {
                             )}
                         />
                         <div className=" col-span-full">
-                            <FormLabel>{`Presentation link (.pptx) `}</FormLabel>
+                            <FormLabel className="flex flex-row gap-4 mb-2 items-center">{`Presentation link (.pptx) `} 
+                                <HoverCard>
+                                    <HoverCardTrigger className="flex flex-row gap-2 items-center border border-white rounded-lg p-1 cursor-pointer">
+                                        Submission format
+                                        <Info size={20}  />
+                                    </HoverCardTrigger>
+                                    <HoverCardContent className="bg-[#090909] text-white">
+                                        <p>Your PPT must contain the following:</p>
+                                        <ul className=" ml-4 my-3 list-decimal space-y-1">
+                                            <li>Max 15 slides.</li>
+                                            <li>Max 10 mb</li>
+                                            <li>Introduction</li>
+                                            <li>Problem Statement</li>
+                                            <li>Target Audience</li>
+                                            <li>Research and Analysis</li>
+                                            <li>Product Description</li>
+                                            <li>Features</li>
+                                            <li>Tech Stack Used</li>
+                                        </ul>
+                                    </HoverCardContent>
+                                </HoverCard>
+                            </FormLabel>
                             <div className="flex flex-row gap-1">
                                 <Input
                                     type="file"

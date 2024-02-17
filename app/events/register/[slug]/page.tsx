@@ -251,7 +251,7 @@ export default function Page() {
                         name="name_lead"
                         render={({ field }) => (
                             <FormItem className="mt-8">
-                                <FormLabel>{`Name of first member (Team Lead) `}</FormLabel>
+                                <FormLabel>{`Name of First member (Team Lead) `}</FormLabel>
                                 <FormControl>
                                     <Input className="text-black" placeholder="Name" {...field} />
                                 </FormControl>

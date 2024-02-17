@@ -6,7 +6,7 @@ import Footer from './Footer'
 
 export default function Home() {
   const text = 'Join the Founders Club: Where Innovation Meets Opportunity!'
-  const title = 'Founders'
+  const title = 'Founders Club'
 
   return (
     <>

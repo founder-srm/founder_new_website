@@ -703,7 +703,7 @@ export default function Page() {
                                 <DialogHeader>
                                 <DialogTitle>Are you absolutely sure?</DialogTitle>
                                 <DialogDescription>
-                                    This action cannot be undone. This will your final Submission. Changes will not be allowed
+                                    This action cannot be undone. This will your final Submission. Changes will not be allowed. If the form does not submit please check the fields and try again.
                                 </DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter className="flex flex-row w-full gap-2 my-4">

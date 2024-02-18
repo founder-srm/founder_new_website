@@ -13,6 +13,10 @@ import { useEffect } from 'react';
 //   DialogTrigger,
 // } from "@/components/ui/dialog";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+
+import Favicon from '@/public/favicon.ico';
+import Head from 'next/head';
+
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -40,6 +44,15 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-icon?<generated>"
+          type="image/<generated>"
+          sizes="<generated>"
+        />
+      </Head>
       <body className={inter.className}>
           {/* <Navbar /> */}
           {children}

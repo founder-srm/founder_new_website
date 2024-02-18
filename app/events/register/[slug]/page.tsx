@@ -563,7 +563,8 @@ export default function Page() {
                                 <FormLabel className="flex flex-row gap-4 mb-2 items-center">{`Presentation link (.pptx) `} 
                                     <HoverCard>
                                         <HoverCardTrigger className="flex flex-row gap-2 items-center border border-white rounded-lg p-1 cursor-pointer">
-                                            Submission format
+                                            <p className=" md:block hidden">Submission format</p>
+                                            <p className=" md:hidden block">View in PC to see submission format</p>
                                             <Info size={20}  />
                                         </HoverCardTrigger>
                                         <HoverCardContent className="bg-[#090909] text-white">

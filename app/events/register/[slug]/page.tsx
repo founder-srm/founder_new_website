@@ -151,6 +151,7 @@ const formSchema = z.object({
 export default function Page() {
     const params = useParams<{ tag: string; item: string, slug: string }>();
     const [eventid, setEventid] = useState('');
+    const [moreInfo, setMoreInfo] = useState('');
     const [loading, setLoading] = useState(false);
     const [File, setFile] = useState<File | null>(null);
     const [Url , setUrl] = useState('');
@@ -165,7 +166,7 @@ export default function Page() {
         const getEventId = async () => {
             let { data: eventslistid, error } = await supabase
             .from('eventslist')
-            .select('id')
+            .select('id, moreinfo')
             .eq('name', params.slug);
 
             if (error) {
@@ -177,7 +178,8 @@ export default function Page() {
                 if (eventslistid) {
                     toast.success('Form fetched successfully');
                     setEventid(eventslistid[0].id || '');
-                    console.log(eventslistid)
+                    setMoreInfo(eventslistid[0].moreinfo || '');
+                    // console.log(eventslistid)
                 }
             }
         }
@@ -534,7 +536,12 @@ export default function Page() {
                                 name="idea_desc"
                                 render={({ field }) => (
                                     <FormItem>
-                                    <FormLabel>Idea Description</FormLabel>
+                                    <FormLabel className="flex flex-row gap-2 items-center">
+                                        Idea Description 
+                                            <span onClick={() => window.open(moreInfo)} className="flex flex-row gap-2 items-center border border-white rounded-lg p-1 cursor-pointer">
+                                                View Tracks Info <Info/>
+                                            </span>
+                                    </FormLabel>
                                     <FormControl>
                                         <Textarea
                                         placeholder="Tell us a little bit about your idea"

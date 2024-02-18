@@ -249,6 +249,12 @@ export default function Page() {
     } 
     
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
+        
+        if (!File || !Url) {
+            toast.error('Please upload the file first');
+            return;
+        }
+        
         try {
             setLoading(true);
             const { data, error } = await supabase

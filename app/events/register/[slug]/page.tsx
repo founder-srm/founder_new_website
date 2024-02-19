@@ -225,7 +225,7 @@ export default function Page() {
         const { data, error } = await supabase
             .storage
             .from('presentation')
-            .upload(`registrations/${File.name}.pptx`, File, {
+            .upload(`registrations/${File.name}`, File, {
                 cacheControl: '3600',
                 upsert: false
             })
@@ -332,6 +332,15 @@ export default function Page() {
             setLoading(false);
         }
     }    
+
+    const checkFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file && !file.name.endsWith('.pptx')) {
+            event.target.value = '';  // Clear the selected file
+            toast.error('Invalid file type. Please select a .pptx file.');
+        }
+        form.reset();
+    }
 
     return (
         <main className="flex flex-col w-screen h-full min-h-screen bg-[#090909] text-white">
@@ -589,7 +598,8 @@ export default function Page() {
                                         accept=".pptx"
                                         className="text-black"
                                         required
-                                        onChange={(e) => setFile(e.target.files![0])}
+
+                                        onChange={(e) => checkFile(e) }
                                     />
                                     <Button disabled={loading} variant='secondary' type="button" onClick={() => onUpload()}>Submit file</Button>
                                 </div>

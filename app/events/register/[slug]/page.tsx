@@ -338,8 +338,8 @@ export default function Page() {
         if (file && !file.name.endsWith('.pptx')) {
             event.target.value = '';  // Clear the selected file
             toast.error('Invalid file type. Please select a .pptx file.');
+            form.reset();
         }
-        form.reset();
     }
 
     return (

@@ -345,7 +345,7 @@ export default function Page() {
     return (
         <main className="flex flex-col w-screen h-full min-h-screen bg-[#090909] text-white">
             <Navbar/>
-            <Tabs defaultValue="Registration" className="flex flex-col items-center justify-evenly w-full my-6 md:my-12 lg:my-24 ">
+            <Tabs defaultValue="Registration" className="flex flex-col items-center justify-evenly w-full my-24 ">
                 <TabsList className="bg-[#090909] border border-white">
                     <TabsTrigger value="Registration">Registering for {params.slug}</TabsTrigger>
                     <TabsTrigger value="Verification">Verify your Registration</TabsTrigger>

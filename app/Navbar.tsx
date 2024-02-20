@@ -3,6 +3,15 @@ import React, { useState, Fragment, useEffect } from 'react'
 import { FaBars } from 'react-icons/fa'
 import Link from 'next/link'
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
 import './App.css'
 
 import styled from 'styled-components'
@@ -176,7 +185,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <Fragment>
+    <>
       <Nav className={`${colorChange ? 'navbar colorChange' : 'navbar'} py-1`}>
         <NavContainer>
           {/* <NavLogo href="/">Founder's Club</NavLogo> */}
@@ -191,8 +200,25 @@ const Navbar = () => {
             />
           </Link>
           <MobileIcon onClick={() => toggleMobileMenu()}>
-            <FaBars className={`${mobileMenuOpen ? 'hidden' : ''}`} />
+           
           </MobileIcon>
+          <Sheet>
+            <SheetTrigger className=' md:hidden'><FaBars  /></SheetTrigger>
+              <SheetContent className='bg-[#0E0E0E] bg-opacity-95 text-white border-l-black'>
+                <SheetHeader>
+                  <SheetTitle className='text-white'>Founders Club</SheetTitle>
+                  <SheetDescription>
+                    <div className='flex flex-col items-start gap-4 text-white my-2'>
+                       <Link className='border-b border-gray-400 px-4 rounded-sm space-y-1 py-1 text-base ' href="/about">About</Link>
+                       <Link className='border-b border-gray-400 px-4 rounded-sm space-y-1 py-1 text-base ' href="/events">Our Events</Link>
+                       <Link className='border-b border-gray-400 px-4 rounded-sm space-y-1 py-1 text-base ' href="/team">Our Team</Link>
+                       <Link className='border-b border-gray-400 px-4 rounded-sm space-y-1 py-1 text-base ' href="/contact">Contact Us</Link>
+                       <Link className='border-b border-gray-400 px-4 rounded-sm space-y-1 py-1 text-base ' href="/gallery">Gallery</Link>
+                    </div>
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+          </Sheet>
           <NavMenu>
             <NavItem>
               <Link href="/about">
@@ -221,41 +247,9 @@ const Navbar = () => {
             </NavItem>
           </NavMenu>
         </NavContainer>
+      
       </Nav>
-      {mobileMenuOpen && (
-        <MobileMenu
-          onClick={toggleMobileMenu}
-          className={`${mobileMenuOpen ? 'menu-open' : ''} z-50 py-4`}
-        >
-          <div
-            className="close-button py-3 pl-2"
-            onClick={handleMobileMenuLinkClick}
-          >
-            X
-          </div>
-          <MobileMenuLinks className="grid grid-cols-2">
-            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
-              <Link href="/about">About</Link>
-            </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
-              <Link href="/team">Team</Link>
-            </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
-              <Link href="/contact">Contact</Link>
-            </MobileMenuLink>
-            <MobileMenuLink onClick={handleMobileMenuLinkClick}>
-              <Link href="/gallery">Gallery</Link>
-            </MobileMenuLink>
-            <MobileMenuLink
-              onClick={handleMobileMenuLinkClick}
-              className=" col-span-2"
-            >
-              <Link href="/events">Events</Link>
-            </MobileMenuLink>
-          </MobileMenuLinks>
-        </MobileMenu>
-      )}
-    </Fragment>
+    </>
   )
 }
 

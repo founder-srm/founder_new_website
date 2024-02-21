@@ -340,7 +340,11 @@ export default function Page() {
             toast.error('Invalid file type. Please select a .pptx file.');
             form.reset();
         }
+        else if (event.target.files) { // Add null check
+            setFile(event.target.files[0]);
+        }
     }
+
 
     return (
         <main className="flex flex-col w-screen h-full min-h-screen bg-[#090909] text-white">

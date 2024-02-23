@@ -239,7 +239,7 @@ export default function Page() {
         }
         const { data : fileData } = supabase
             .storage
-            .from('presentatioin')
+            .from('presentation')
             .getPublicUrl(`registrations/${File.name}`)
         if (fileData) {
             setUrl(fileData.publicUrl )

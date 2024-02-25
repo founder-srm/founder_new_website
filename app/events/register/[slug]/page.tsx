@@ -58,6 +58,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
+import ClosedForm from "./ClosedForm";
 
 
 interface EventRegistration {
@@ -155,11 +156,24 @@ export default function Page() {
     const [loading, setLoading] = useState(false);
     const [File, setFile] = useState<File | null>(null);
     const [Url , setUrl] = useState('');
+    const [isOpen, setIsOpen] = useState(true);
 
     const [verification, setVerification] = useState('');
     const [verificationData, setVerificationData] = useState<EventRegistration[] | null>(null);
 
     const router = useRouter();
+
+    useEffect(() => {
+        const now = new Date();
+        const endDate = new Date(2024, 1, 25, 23, 59, 59); 
+        const msUntilEndDate = endDate.getTime() - now.getTime();
+    
+        const timer = setTimeout(() => {
+          setIsOpen(false);
+        }, msUntilEndDate);  // Close the form at 11:59 PM on February 25, 2024
+    
+        return () => clearTimeout(timer);
+      }, []);
 
     useEffect(() => {
         //get event id from params
@@ -183,8 +197,11 @@ export default function Page() {
                 }
             }
         }
+        
+        if (isOpen === true) {
+            getEventId();
+        }
 
-        getEventId();
     }, [])
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -349,6 +366,9 @@ export default function Page() {
         }
     }
 
+    if (!isOpen) {
+        return <ClosedForm/>; 
+      }
 
     return (
         <main className="flex flex-col w-screen h-full min-h-screen bg-[#090909] text-white">

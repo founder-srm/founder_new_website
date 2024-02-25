@@ -314,16 +314,20 @@ export default function Page() {
                 .from('eventsregistration')
                 .select('*')
                 .eq('registration_lead', verification)
-            // console.log(data)
+
+            const response: EventRegistration[] = data ?? [];
             if (error) {
                 console.log(error);
                 toast.error('Number not Found! Please check the number and try again.');
                 return;
             }
-            if (data) {
+            if (response.length > 0) {
                 console.log(data);
                 setVerificationData(data);
                 toast.success('Verified successfully');
+            }
+            else {
+                toast.error('Number not Found! Please check the number and try again.');
             }
         } catch (error) {
             console.log(error);

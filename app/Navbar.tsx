@@ -199,11 +199,11 @@ const Navbar = () => {
               className="w-auto h-[70px] my-1"
             />
           </Link>
-          <MobileIcon onClick={() => toggleMobileMenu()}>
-           
-          </MobileIcon>
+          
+          <MobileIcon onClick={() => toggleMobileMenu()}></MobileIcon>
+
           <Sheet>
-            <SheetTrigger className=' md:hidden'><FaBars  /></SheetTrigger>
+            <SheetTrigger className='md:hidden'><FaBars /></SheetTrigger>
               <SheetContent className='bg-[#0E0E0E] bg-opacity-95 text-white border-l-black'>
                 <SheetHeader>
                   <SheetTitle className='text-white'>Founders Club</SheetTitle>

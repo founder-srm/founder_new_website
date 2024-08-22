@@ -184,7 +184,7 @@ export default function Page() {
         { id: "1", label: "Creatives" },
         { id: "2", label: "Operations and Marketing" },
         { id: "3", label: "Outreach" },
-        { id: "4", label: "Sponserships" },
+        { id: "4", label: "Sponsorships" },
         { id: "5", label: "Technical" },
     ];
 

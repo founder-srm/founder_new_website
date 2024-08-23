@@ -132,23 +132,23 @@ const Outreach: React.FC = () => {
 
 const Sponsorships: React.FC = () => {
 
-    // const sponserMembers = [
-    //     {
-    //         id : 1,
-    //         name : "Arhaan",
-    //         designation : "Associate Lead",
-    //         image : "/about/l-suvan-t.jpg",
-    //         profile : "https://www.linkedin.com/in/arhaansiddiquee/",
-    //     },
-    // ]
+    const sponserMembers = [
+        {
+            id : 1,
+            name : "Priyansh",
+            designation : "Lead",
+            image : "/about/l-priyansh-s.jpg",
+            profile : "https://www.linkedin.com/in/priyansh-nandwana-b68b1724a/",
+        },
+    ]
 
     return (
         <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-white text-8xl max-md:text-6xl max-sm:text-4xl font-semibold font-sans">Sponsorships</p>
             <p className="text-white text-xl max-sm:text-sm">Securing the resources we need to power our initiatives by building strong relationships with sponsors. Be the backbone of our club's financial support</p>
-            {/* <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
+            <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
                 <AnimatedTooltip items={sponserMembers} />
-            </a> */}
+            </a>
         </div>
     );
 

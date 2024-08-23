@@ -40,13 +40,27 @@ const Creatives: React.FC = () => {
             image : "/about/al-arhaan-c.jpg",
             profile : "https://www.linkedin.com/in/arhaansiddiquee/",
         },
+        {
+            id : 2,
+            name : "Adit Sriram",
+            designation : "Lead",
+            image : "/about/l-adit-c.jpeg",
+            profile : "https://www.linkedin.com/in/adit-sriram-4bb07b261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        },
+        {
+            id : 3,
+            name : "Pratyush",
+            designation : "Associate Lead",
+            image : "/about/al-pratyush-c.jpg",
+            profile : "https://www.linkedin.com/in/pratyush-biswas-187908202?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        },
     ]
 
     return (
         <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-white text-8xl max-md:text-6xl max-sm:text-4xl font-semibold font-sans">Creatives</p>
             <p className="text-white text-xl max-sm:text-sm">Crafting eye-catching content to showcase our club's vision and events. Unleash your creativity and make our ideas come to life, attracting the community and establishing a potential connect with them!</p>
-            <a href="" className="flex flex-row justify-start gap-16">
+            <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
                 <AnimatedTooltip items={creativeMembers} />
             </a>
         </div>
@@ -84,7 +98,7 @@ const OperationsAndMarketing: React.FC = () => {
         <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-white text-8xl max-md:text-6xl max-sm:text-4xl font-semibold font-sans">Operations and Marketing</p>
             <p className="text-white text-xl max-sm:text-sm">Strategizing and executing events, while broadcasting the activities to ensure maximum impact. Be the driving force behind our club's affairs and engagements</p>
-            <a href="" className="flex flex-row justify-start gap-16">
+            <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
                 <AnimatedTooltip items={opmMembers} />
             </a>
         </div>
@@ -94,23 +108,23 @@ const OperationsAndMarketing: React.FC = () => {
 
 const Outreach: React.FC = () => {
 
-    const outreachMembers = [
-        {
-            id : 1,
-            name : "Arhaan",
-            designation : "Associate Lead",
-            image : "/about/l-suvan-t.jpg",
-            profile : "https://www.linkedin.com/in/arhaansiddiquee/",
-        },
-    ]
+    // const outreachMembers = [
+    //     {
+    //         id : 1,
+    //         name : "Arhaan",
+    //         designation : "Associate Lead",
+    //         image : "/about/l-suvan-t.jpg",
+    //         profile : "https://www.linkedin.com/in/arhaansiddiquee/",
+    //     },
+    // ]
 
     return (
         <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-white text-8xl max-md:text-6xl max-sm:text-4xl font-semibold font-sans">Outreach</p>
             <p className="text-white text-xl max-sm:text-sm">Building bridges with startups, E-Cells, and the broader community to expand our network and influence. Connect and collaborate to create valuable partnerships</p>
-            <a href="" className="flex flex-row justify-start gap-16">
+            {/* <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
                 <AnimatedTooltip items={outreachMembers} />
-            </a>
+            </a> */}
         </div>
     );
 
@@ -118,23 +132,23 @@ const Outreach: React.FC = () => {
 
 const Sponsorships: React.FC = () => {
 
-    const sponserMembers = [
-        {
-            id : 1,
-            name : "Arhaan",
-            designation : "Associate Lead",
-            image : "/about/l-suvan-t.jpg",
-            profile : "https://www.linkedin.com/in/arhaansiddiquee/",
-        },
-    ]
+    // const sponserMembers = [
+    //     {
+    //         id : 1,
+    //         name : "Arhaan",
+    //         designation : "Associate Lead",
+    //         image : "/about/l-suvan-t.jpg",
+    //         profile : "https://www.linkedin.com/in/arhaansiddiquee/",
+    //     },
+    // ]
 
     return (
         <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-white text-8xl max-md:text-6xl max-sm:text-4xl font-semibold font-sans">Sponsorships</p>
             <p className="text-white text-xl max-sm:text-sm">Securing the resources we need to power our initiatives by building strong relationships with sponsors. Be the backbone of our club's financial support</p>
-            <a href="" className="flex flex-row justify-start gap-16">
+            {/* <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
                 <AnimatedTooltip items={sponserMembers} />
-            </a>
+            </a> */}
         </div>
     );
 
@@ -170,7 +184,7 @@ const Technical: React.FC = () => {
         <div className="flex flex-col items-center justify-center gap-8">
             <p className="text-white text-8xl max-md:text-6xl max-sm:text-4xl font-semibold font-sans">Technical</p>
             <p className="text-white text-xl max-sm:text-sm">Developing innovative technical solutions to create and maintain in-house projects within DEI. Use your skills to turn ideas into functional realities!</p>
-            <a href="" className="flex flex-row justify-start gap-16">
+            <a href="" className="flex flex-row justify-start max-sm:justify-evenly gap-16">
                 <AnimatedTooltip items={techMembers} />
             </a>
         </div>
